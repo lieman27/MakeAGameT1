@@ -5,53 +5,53 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
-    public Rigidbody2D rb;
-    public Transform spriteRoot;
+    [SerializeField] private Rigidbody2D rb;
+     [SerializeField] private Transform spriteRoot;
 
     [Header("Collision")]
-    public LayerMask groundLayer;
-    public Transform groundCheck;
-    public Vector2 groundCheckOffset = new Vector2(0f, -0.6f);
-    public float groundCheckRadius = 0.12f;
+     [SerializeField] private LayerMask groundLayer;
+     [SerializeField] private Transform groundCheck;
+     [SerializeField] private Vector2 groundCheckOffset = new Vector2(0f, -0.6f);
+     [SerializeField] private float groundCheckRadius = 0.12f;
 
-    public Transform wallCheck;
-    public Vector2 wallCheckOffset = new Vector2(0.5f, 0f);
-    public Vector2 wallCheckSize = new Vector2(0.1f, 0.9f);
+     [SerializeField] private Transform wallCheck;
+     [SerializeField] private Vector2 wallCheckOffset = new Vector2(0.5f, 0f);
+     [SerializeField] private Vector2 wallCheckSize = new Vector2(0.1f, 0.9f);
 
     [Header("Movement")]
-    public float maxRunSpeed = 8f;
-    public float acceleration = 80f;
-    public float deceleration = 80f;
-    public float airAcceleration = 40f;
-    public float airDeceleration = 40f;
-    public float friction = 0f; // optional ground friction
+     [SerializeField] private float maxRunSpeed = 8f;
+     [SerializeField] private float acceleration = 80f;
+     [SerializeField] private float deceleration = 80f;
+     [SerializeField] private float airAcceleration = 40f;
+     [SerializeField] private float airDeceleration = 40f;
+     [SerializeField] private float friction = 0f; // optional ground friction
 
     [Header("Jumping")]
     public float jumpVelocity = 12f;
-    public float gravityScale = 4f; // main gravity while falling
-    public float fallGravityMultiplier = 1.8f; // multiplies gravity when falling
-    public float lowJumpMultiplier = 3.5f; // stronger gravity when jump is cut
+     [SerializeField] private float gravityScale = 4f; // main gravity while falling
+     [SerializeField] private float fallGravityMultiplier = 1.8f; // multiplies gravity when falling
+     [SerializeField] private float lowJumpMultiplier = 3.5f; // stronger gravity when jump is cut
 
     [Header("Timing")]
-    public float coyoteTime = 0.12f;
-    public float jumpBufferTime = 0.12f;
+     [SerializeField] private float coyoteTime = 0.12f;
+     [SerializeField] private float jumpBufferTime = 0.12f;
 
     [Header("Dash")]
-    public bool allowDash = true;
-    public float dashSpeed = 22f;
-    public float dashTime = 0.14f;
-    public float dashCooldown = 0.25f; // short cooldown
-    public bool canAirDashOnlyOnce = true;
+     [SerializeField] private bool allowDash = true;
+     [SerializeField] private float dashSpeed = 22f;
+     [SerializeField] private float dashTime = 0.14f;
+     [SerializeField] private float dashCooldown = 0.25f; // short cooldown
+     [SerializeField] private bool canAirDashOnlyOnce = true;
 
     [Header("Wall Mechanics")]
-    public bool allowWallSlide = true;
-    public float wallSlideSpeed = 2f;
-    public float wallJumpHorizontal = 8f;
-    public float wallJumpVertical = 12f;
-    public float wallStickTime = 0.15f; // how long to 'stick' before sliding
+     [SerializeField] private bool allowWallSlide = true;
+     [SerializeField] private float wallSlideSpeed = 2f;
+     [SerializeField] private float wallJumpHorizontal = 8f;
+     [SerializeField] private float wallJumpVertical = 12f;
+     [SerializeField] private float wallStickTime = 0.15f; // how long to 'stick' before sliding
 
     // Input System
-    private PlayerControls controls;
+    private PlayerControls _controls;
 
     // Internals
     float horizontalInput;
@@ -87,27 +87,27 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = gravityScale;
 
         // Setup input controls
-        controls = new PlayerControls();
+        _controls = new PlayerControls();
     }
 
     void OnEnable()
     {
-        controls.Enable();
+        _controls.Enable();
     }
 
     void OnDisable()
     {
-        controls.Disable();
+        _controls.Disable();
     }
 
     void Update()
     {
-        Vector2 move = controls.Player.Move.ReadValue<Vector2>();
+        Vector2 move = _controls.Player.Move.ReadValue<Vector2>();
         horizontalInput = move.x;
 
-        jumpPressed = controls.Player.Jump.WasPressedThisFrame();
-        jumpHeld = controls.Player.Jump.IsPressed();
-        dashPressed = controls.Player.Dash.WasPressedThisFrame();
+        jumpPressed = _controls.Player.Jump.WasPressedThisFrame();
+        jumpHeld = _controls.Player.Jump.IsPressed();
+        dashPressed = _controls.Player.Dash.WasPressedThisFrame();
 
         // timers
         if (isGrounded)
@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour
         dashCooldownTimer = dashCooldown;
         savedVelocityBeforeDash = rb.linearVelocity;
 
-        Vector2 dashDir = controls.Player.Move.ReadValue<Vector2>();
+        Vector2 dashDir = _controls.Player.Move.ReadValue<Vector2>();
         if (dashDir.sqrMagnitude == 0f)
         {
             dashDir = spriteRoot != null && spriteRoot.localScale.x < 0 ? Vector2.left : Vector2.right;
