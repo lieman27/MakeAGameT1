@@ -1,43 +1,46 @@
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject player; 
-    [SerializeField] private float maxHealth = 10;
+    [SerializeField] private float maxHealth = 15;
     private float currentHealth;
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-    [SerializeField]
-    private GameObject damagingObject;
+    private Transform player;
+
+    private float damageFlash = 0.1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckDamage();
-    }
 
-    public void CheckDamage()
-    {
-        
     }
 
     public void Damage(float dmg)
     {
-        maxHealth -= dmg;
+
+        currentHealth -= dmg;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+
+            StartCoroutine(DamageFlash());
+        
+        Debug.Log("Player took damage - " + dmg + " damage - " + currentHealth + " health remaining");
         if (IsDead())
         {
-            player.transform.position = new Vector2(0, 0);
+            Die();
         }
     }
 
@@ -49,4 +52,19 @@ public class PlayerHealth : MonoBehaviour
         }
         return false;
     }
+
+    public void Die()
+    {
+        player.transform.position = new Vector2(0, 0);
+        currentHealth = maxHealth;
+        Debug.Log("Dead");
+    }
+
+    public IEnumerator DamageFlash()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(damageFlash);
+        spriteRenderer.color = Color.lightGreen;
+    }
+
 }

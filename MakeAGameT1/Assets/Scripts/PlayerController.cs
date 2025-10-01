@@ -24,8 +24,7 @@ public class PlayerController : MonoBehaviour
      [SerializeField] private float deceleration = 80f;
      [SerializeField] private float airAcceleration = 40f;
      [SerializeField] private float airDeceleration = 40f;
-     [SerializeField] private float friction = 0f; // optional ground friction
-
+    
     [Header("Jumping")]
     public float jumpVelocity = 12f;
      [SerializeField] private float gravityScale = 4f; // main gravity while falling
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
      [SerializeField] private float dashSpeed = 22f;
      [SerializeField] private float dashTime = 0.14f;
      [SerializeField] private float dashCooldown = 0.25f; // short cooldown
-     [SerializeField] private bool canAirDashOnlyOnce = true;
 
     [Header("Wall Mechanics")]
      [SerializeField] private bool allowWallSlide = true;
