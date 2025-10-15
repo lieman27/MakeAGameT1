@@ -103,7 +103,29 @@
                 },
                 {
                     "name": "",
+                    "id": "4b366c41-3fd2-48b3-8bce-bab95d7d9bf6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "54809921-8ad8-40f5-9db6-84a803b4252b",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b574ce6-5f4c-473c-8b5b-6b2857bd2797",
                     "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
