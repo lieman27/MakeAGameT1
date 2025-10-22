@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -14,16 +15,21 @@ public class EnemyHealth : MonoBehaviour
     private GameObject enemy;
     private float damageFlash = 0.1f;
     private float wallDmgInvincibility = 2.5f;
-    private float timer = 0f;
     private bool wallDmgPossible;
-    private float wallDmgCooldown = 1.0f; 
+    private float wallDmgCooldown = 1.0f;
+    private GameObject cvc; 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        cvc = GameObject.Find("CinemachineCamera");
+
+    }
     void Start()
     {
         currentHealth = maxHealth;
-        enemy = GetComponent<GameObject>(); 
+        enemy = GetComponent<GameObject>();
     }
 
     // Update is called once per frame
@@ -63,6 +69,8 @@ public class EnemyHealth : MonoBehaviour
                 return;
             }
 
+            CameraController cameraController = cvc.GetComponent<CameraController>();
+            cameraController.CameraShake(4.46f);
             Damage(5);
 
             wallDmgPossible = false;

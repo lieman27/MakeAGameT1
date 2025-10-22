@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] private float maxHealth = 15;
-    private float currentHealth;
+    private float currentHealth; 
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
