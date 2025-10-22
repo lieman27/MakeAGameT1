@@ -1087,11 +1087,12 @@ MonoBehaviour:
   dashSpeed: 30
   dashTime: 0.2
   dashCooldown: 0
+  dashBufferTime: 0.12
   allowWallSlide: 1
   wallSlideSpeed: 2
   wallJumpHorizontal: 10
   wallJumpVertical: 25
-  wallStickTime: 0.15
+  wallStickTime: 0
 --- !u!114 &613701427
 MonoBehaviour:
   m_ObjectHideFlags: 0
