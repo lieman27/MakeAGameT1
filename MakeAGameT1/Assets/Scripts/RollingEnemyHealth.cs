@@ -88,7 +88,7 @@ public class EnemyHealth : MonoBehaviour
 
             wallDmgPossible = false;
             wallDmgCooldown = wallDmgInvincibility;
-
+ 
 
         }
         if (collision.gameObject.CompareTag("Player"))

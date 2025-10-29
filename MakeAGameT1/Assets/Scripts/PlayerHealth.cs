@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        player.transform.position = new Vector2(0, 0);
+        player.transform.position = new Vector2(0, 5);
         currentHealth = maxHealth;
         Debug.Log("Dead");
     }
