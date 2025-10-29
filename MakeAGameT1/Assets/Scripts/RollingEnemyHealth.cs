@@ -17,6 +17,10 @@ public class EnemyHealth : MonoBehaviour
     private float wallDmgInvincibility = 2.5f;
     private bool wallDmgPossible;
     private float wallDmgCooldown = 1.0f;
+
+    private float damagePlayerInvincibility = 2.5f;
+    private bool damagePlayerPossible;
+    private float damagePlayerCooldown = 1.0f;
     private GameObject cvc; 
 
 
@@ -43,6 +47,14 @@ public class EnemyHealth : MonoBehaviour
                 wallDmgPossible = true;
             }
         }
+        if (!damagePlayerPossible)
+        {
+            damagePlayerCooldown -= Time.deltaTime;
+            if (damagePlayerCooldown < 0)
+            {
+                damagePlayerPossible = true;
+            }
+        }
     }
     public void Damage(float dmg)
     {
@@ -58,6 +70,7 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
         wallDmgPossible = false;
+        damagePlayerPossible = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -75,8 +88,18 @@ public class EnemyHealth : MonoBehaviour
 
             wallDmgPossible = false;
             wallDmgCooldown = wallDmgInvincibility;
-            
 
+
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (!damagePlayerPossible)
+            {
+                return;
+            }
+            collision.gameObject.GetComponent<PlayerHealth>().Damage(5);
+            damagePlayerPossible = false;
+            damagePlayerCooldown = damagePlayerInvincibility;
         }
     }
 
