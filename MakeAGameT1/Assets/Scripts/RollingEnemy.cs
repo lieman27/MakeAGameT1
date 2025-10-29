@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+        canAttack = false;
     }
 
     // Update is called once per frame
@@ -41,11 +42,17 @@ public class Enemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        canAttack = true;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canAttack = true;
+        }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        StartCoroutine(DamageBuffer());
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(DamageBuffer());
+        }
     }
     
     public IEnumerator DamageBuffer()

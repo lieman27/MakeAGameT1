@@ -70,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(damageFlash);
-        spriteRenderer.color = Color.lightGreen;
+        spriteRenderer.color = Color.white;
     }
 
 }

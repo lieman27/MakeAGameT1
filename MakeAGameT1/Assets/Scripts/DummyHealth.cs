@@ -12,11 +12,8 @@ public class DummyHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameObject enemy;
     private float damageFlash = 0.1f;
-    private float wallDmgInvincibility = 2.5f;
     private bool wallDmgPossible;
     private float wallDmgCooldown = 1.0f;
-    private GameObject cvc; 
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -55,24 +52,6 @@ public class DummyHealth : MonoBehaviour
             Die();
         }
         wallDmgPossible = false;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (!wallDmgPossible)
-            {
-                return;
-            }
-
-            Damage(5);
-
-            wallDmgPossible = false;
-            wallDmgCooldown = wallDmgInvincibility;
-            
-
-        }
     }
 
     public bool IsDead()
