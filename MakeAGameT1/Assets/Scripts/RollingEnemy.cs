@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    [SerializeField]
+    private float initialSpeed; 
     [SerializeField]
     private float speed;
     private Rigidbody2D rb;
     private GameObject player;
+    [SerializeField]
     private bool canAttack;
     [SerializeField]
-    private float damageBuffer = 2.0f;
+    private float damageBuffer = 1.0f;
 
     [SerializeField]
-    
+    private float speedReset = 1.0f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,13 +54,21 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(DamageBuffer());
+            StartCoroutine(ResetSpeed());
         }
+        
     }
-    
+
     public IEnumerator DamageBuffer()
     {
         yield return new WaitForSeconds(damageBuffer);
         canAttack = false;
+    }
+    
+    public IEnumerator ResetSpeed()
+    {
+        yield return new WaitForSeconds(speedReset);
+        speed = initialSpeed;
     }
 
 }

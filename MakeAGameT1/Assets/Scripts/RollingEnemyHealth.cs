@@ -12,6 +12,9 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private float playerDamage;
+    
     private GameObject enemy;
     private float damageFlash = 0.1f;
     private float wallDmgInvincibility = 2.5f;
@@ -88,7 +91,7 @@ public class EnemyHealth : MonoBehaviour
 
             wallDmgPossible = false;
             wallDmgCooldown = wallDmgInvincibility;
- 
+
 
         }
         if (collision.gameObject.CompareTag("Player"))
@@ -97,9 +100,16 @@ public class EnemyHealth : MonoBehaviour
             {
                 return;
             }
-            collision.gameObject.GetComponent<PlayerHealth>().Damage(5);
+            collision.gameObject.GetComponent<PlayerHealth>().Damage(playerDamage);
             damagePlayerPossible = false;
             damagePlayerCooldown = damagePlayerInvincibility;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DamagingWall"))
+        {
+            wallDmgPossible = false;
         }
     }
 
