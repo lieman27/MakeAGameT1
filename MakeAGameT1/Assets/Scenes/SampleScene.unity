@@ -2267,7 +2267,6 @@ MonoBehaviour:
   animator: {fileID: 1412953055}
   playerController: {fileID: 613701426}
   movementThreshold: 0.1
-  landingVelocityThreshold: -2
 --- !u!1 &1538397951
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,9 +21,9 @@ public class PlayerAnimationController : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private float movementThreshold = 0.1f;
-    [SerializeField] private float landingVelocityThreshold = -2f;
 
     private bool wasGrounded;
+    private bool wasInAir;
 
     void Reset()
     {
@@ -45,7 +45,16 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    void Update()
+    void Start()
+    {
+        if (playerController != null)
+        {
+            wasGrounded = playerController.IsGrounded;
+            wasInAir = !wasGrounded;
+        }
+    }
+
+    void LateUpdate()
     {
         if (animator == null || playerController == null)
             return;
@@ -71,16 +80,17 @@ public class PlayerAnimationController : MonoBehaviour
         HandleJumpAndLandTriggers(isGrounded, velocity.y);
 
         wasGrounded = isGrounded;
+        wasInAir = !isGrounded;
     }
 
     void HandleJumpAndLandTriggers(bool isGrounded, float velocityY)
     {
-        if (!wasGrounded && isGrounded && velocityY <= landingVelocityThreshold)
+        if (wasInAir && isGrounded)
         {
             animator.SetTrigger(PlayerAnimationParameters.LAND_TRIGGER);
         }
 
-        if (wasGrounded && !isGrounded && velocityY > 0)
+        if (wasGrounded && !isGrounded && velocityY > 0.1f)
         {
             animator.SetTrigger(PlayerAnimationParameters.JUMP_TRIGGER);
         }

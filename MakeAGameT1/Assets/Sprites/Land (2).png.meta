@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: b1711063f2968c94aa6e7794340d48e6
+guid: fd209f19e11988f4a90f3433f4b8cb67
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4134548387895576566
-    second: Land_0
+      213: 3987433879689678044
+    second: Land (2)_0
   - first:
-      213: 2555238416136873046
-    second: Land_1
-  - first:
-      213: 2650256439035795089
-    second: Land_2
+      213: 7540140158683526468
+    second: Land (2)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Land_0
+      name: Land (2)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f70e2f5addd06930800000000000000
-      internalID: 4134548387895576566
+      spriteID: cdcc24cbcf5365730800000000000000
+      internalID: 3987433879689678044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Land_1
+      name: Land (2)_1
       rect:
         serializedVersion: 2
         x: 160
@@ -143,30 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 654254e1dc7067320800000000000000
-      internalID: 2555238416136873046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Land_2
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1969b6c803a97c420800000000000000
-      internalID: 2650256439035795089
+      spriteID: 4453df26685f3a860800000000000000
+      internalID: 7540140158683526468
       vertices: []
       indices: 
       edges: []
@@ -175,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e0df4322d463404885cdb4957e1ba4d
+    spriteID: b32a1f36995b37449afd6ed70d9c2789
     internalID: 0
     vertices: []
     indices: 
@@ -185,11 +160,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":160.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Land_0: 4134548387895576566
-      Land_1: 2555238416136873046
-      Land_2: 2650256439035795089
+      Land (2)_0: 3987433879689678044
+      Land (2)_1: 7540140158683526468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
