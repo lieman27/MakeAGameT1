@@ -29,6 +29,12 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    public void AddHealth(float amt)
+    {
+        maxHealth += amt;
+        currentHealth += amt;
+    }
+
     public void Damage(float dmg)
     {
 

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 wallCheckSize = new Vector2(0.1f, 0.9f);
 
     [Header("Movement")]
-    [SerializeField] private float maxRunSpeed = 8f;
+    [SerializeField] public float maxRunSpeed = 8f;
     [SerializeField] private float acceleration = 80f;
     [SerializeField] private float deceleration = 80f;
     [SerializeField] private float airAcceleration = 40f;
