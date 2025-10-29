@@ -49,6 +49,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallJumpVertical = 12f;
     [SerializeField] private float wallStickTime = 0.15f; // how long to 'stick' before sliding
 
+    public bool IsGrounded => isGrounded;
+    public bool IsDashing => isDashing;
+    public bool IsWallSliding => isTouchingWall && !isGrounded && rb.linearVelocity.y < 0f;
+    public Vector2 Velocity => rb.linearVelocity;
+
     // Input System
     private PlayerControls _controls;
 
