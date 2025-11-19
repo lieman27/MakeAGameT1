@@ -26,4 +26,8 @@ public class MenuManager : MonoBehaviour
     public void SwitchToMenu(){
         SceneManager.LoadScene("Menu");
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        SceneManager.LoadScene("WinScreen");
+    }
 }
