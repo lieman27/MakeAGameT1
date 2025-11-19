@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EvilTerrain : MonoBehaviour
@@ -53,15 +54,18 @@ public class EvilTerrain : MonoBehaviour
 
         if (inHitbox)
         {
-            timer += Time.deltaTime;
-            if (timer >= damageTimer)
-            {
-                if (playerHealth != null)
-                {
-                    playerHealth.Damage(attackDamage);
-                    timer = 0;
-                }
-            }
+            
+            StartCoroutine(DamagePlayer());
+            
         }
+    }
+
+    public IEnumerator DamagePlayer()
+    {
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+
+        playerHealth.Damage(attackDamage);
+        yield return new WaitForSeconds(damageTimer);
+        timer = damageTimer; 
     }
 }
