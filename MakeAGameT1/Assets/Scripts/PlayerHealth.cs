@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private Transform player;
-
+    private Transform spawnpoint; 
     private float damageFlash = 0.1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        spawnpoint = GameObject.FindGameObjectWithTag("Spawn").transform;
     }
 
     // Update is called once per frame
@@ -61,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        player.transform.position = new Vector2(0, 5);
+        player.transform.position = new Vector2(spawnpoint.position.x, spawnpoint.position.y);
         currentHealth = maxHealth;
         Debug.Log("Dead");
     }

@@ -139,8 +139,15 @@ public class PlayerController : MonoBehaviour
 
         if (spriteRoot != null)
         {
-            if (horizontalInput > 0.1f) spriteRoot.localScale = new Vector3(1, 1, 1);
-            else if (horizontalInput < -0.1f) spriteRoot.localScale = new Vector3(-1, 1, 1);
+            if (horizontalInput > 0.1f)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (horizontalInput < -0.1f)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+
+            } 
         }
     }
 

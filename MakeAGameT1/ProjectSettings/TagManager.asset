@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - DamagingWall
+  - Spawn
   layers:
   - Default
   - TransparentFX

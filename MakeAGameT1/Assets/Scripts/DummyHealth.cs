@@ -46,7 +46,7 @@ public class DummyHealth : MonoBehaviour
 
         StartCoroutine(DamageFlash());
 
-        Debug.Log("Enemy took damage - " + dmg + " damage - " + currentHealth + " health remaining");
+        Debug.Log("AttackDummy took damage - " + dmg + " damage - " + currentHealth + " health remaining");
         if (IsDead())
         {
             Die();
