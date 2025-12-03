@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1);
 
-            } 
+            }
         }
     }
 
@@ -304,15 +304,16 @@ public class PlayerController : MonoBehaviour
         {
             if (rb.linearVelocity.y < -wallSlideSpeed)
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, -wallSlideSpeed);
+        }
 
-            if (jumpBufferTimer > 0f)
-            {
-                Vector2 dir = new Vector2(-wallDir, 1f).normalized;
-                rb.linearVelocity = new Vector2(dir.x * wallJumpHorizontal, dir.y * wallJumpVertical);
-                wallStickTimer = 0f;
-                jumpBufferTimer = 0f;
-                coyoteTimer = 0f;
-            }
+        // Allow wall jump even when not actively sliding, just touching wall
+        if (isTouchingWall && !isGrounded && jumpBufferTimer > 0f)
+        {
+            Vector2 dir = new Vector2(-wallDir, 1f).normalized;
+            rb.linearVelocity = new Vector2(dir.x * wallJumpHorizontal, dir.y * wallJumpVertical);
+            wallStickTimer = 0f;
+            jumpBufferTimer = 0f;
+            coyoteTimer = 0f;
         }
     }
 
