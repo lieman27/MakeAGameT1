@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 3309956300088857794}
   - component: {fileID: 8931147122138585902}
   - component: {fileID: 6086335658593068672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RollingEnemy
-  m_TagString: Untagged
+  m_TagString: RollingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
