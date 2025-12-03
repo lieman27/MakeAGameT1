@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatChangesItem
   name: SpeedUp
   description: PLACEHOLDER
-  artwork: {fileID: 0}
+  artwork: {fileID: -5613902211144687452, guid: 457970244afa78f4c88c491288981cb7, type: 3}
   healthChange: 0
   speedChange: 10

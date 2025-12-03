@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     private Transform player;
     private Transform spawnpoint; 
     private float damageFlash = 0.1f;
+    [SerializeField]
+    private HealthBarUI healthBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         spawnpoint = GameObject.FindGameObjectWithTag("Spawn").transform;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -34,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHealth += amt;
         currentHealth += amt;
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
     public void Damage(float dmg)
@@ -41,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= dmg;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        healthBar.SetHealth(currentHealth);
 
             StartCoroutine(DamageFlash());
         
@@ -65,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
         player.transform.position = new Vector2(spawnpoint.position.x, spawnpoint.position.y);
         currentHealth = maxHealth;
         Debug.Log("Dead");
+        healthBar.SetHealth(currentHealth);
     }
 
     public IEnumerator DamageFlash()

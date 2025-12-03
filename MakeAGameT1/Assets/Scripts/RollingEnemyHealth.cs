@@ -16,7 +16,7 @@ public class EnemyHealth : MonoBehaviour
     private float playerDamage;
     
     private GameObject enemy;
-    private float damageFlash = 0.1f;
+    private float damageFlash = 0.2f;
     private float wallDmgInvincibility = 2.5f;
     private bool wallDmgPossible;
     private float wallDmgCooldown = 1.0f;
@@ -37,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         enemy = GetComponent<GameObject>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= dmg;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
 
-        StartCoroutine(DamageFlash());
+            StartCoroutine(DamageFlash());
 
         Debug.Log("Enemy took damage - " + dmg + " damage - " + currentHealth + " health remaining");
         if (IsDead())
@@ -131,6 +132,6 @@ public class EnemyHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(damageFlash);
-        spriteRenderer.color = Color.hotPink;
+        spriteRenderer.color = Color.white;
     }
 }

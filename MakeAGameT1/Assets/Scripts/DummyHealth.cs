@@ -72,6 +72,6 @@ public class DummyHealth : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(damageFlash);
-        spriteRenderer.color = Color.skyBlue;
+        spriteRenderer.color = Color.white;
     }
 }

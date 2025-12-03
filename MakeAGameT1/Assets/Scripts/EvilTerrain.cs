@@ -9,7 +9,7 @@ public class EvilTerrain : MonoBehaviour
     [SerializeField]
     private Transform player;
     [SerializeField]
-    private float attackDamage = 5f;
+    private float attackDamage = 100f;
     [SerializeField]
     private float damageTimer = 1.5f;
 
@@ -55,17 +55,10 @@ public class EvilTerrain : MonoBehaviour
         if (inHitbox)
         {
             
-            StartCoroutine(DamagePlayer());
+            playerHealth.Damage(attackDamage);
             
         }
     }
 
-    public IEnumerator DamagePlayer()
-    {
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 
-        playerHealth.Damage(attackDamage);
-        yield return new WaitForSeconds(damageTimer);
-        timer = damageTimer; 
-    }
 }
